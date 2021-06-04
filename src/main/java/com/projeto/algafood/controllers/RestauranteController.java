@@ -35,7 +35,7 @@ public class RestauranteController {
 
         Page restaurantes = repository.findAll(pageable);
 
-        if(!restaurantes.isEmpty()) {
+        if (!restaurantes.isEmpty()) {
             return ResponseEntity.ok(restaurantes);
         }
 
@@ -75,7 +75,8 @@ public class RestauranteController {
                     .findById(id).orElse(null);
 
             if (restauranteAtual != null) {
-                BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
+                BeanUtils.copyProperties(restaurante, restauranteAtual,
+                        "id", "pagamentos");
 
                 restauranteAtual = service.salvar(restauranteAtual);
                 return ResponseEntity.ok(restauranteAtual);
