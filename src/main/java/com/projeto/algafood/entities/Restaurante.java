@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -38,6 +39,7 @@ public class Restaurante implements Serializable {
      * Aqui na classe de Restaurante, criamos essa tabela e damos os nomes dos atributos nessa tabela
      * No inverseJoinColumn, informamos o nome do atributo de pagamentos
      */
+    @JsonIgnore
     @ManyToMany()
     @JoinTable(name = "restaurante_forma_pagamento",
     joinColumns = @JoinColumn(name = "restaurante_id"),

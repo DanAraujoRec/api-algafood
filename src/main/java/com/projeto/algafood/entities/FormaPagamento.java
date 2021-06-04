@@ -2,6 +2,7 @@ package com.projeto.algafood.entities;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,6 +24,7 @@ public class FormaPagamento implements Serializable {
     @Column(nullable = false)
     private String descricao;
 
+    @JsonIgnore
     @ManyToMany()
     List<Restaurante> restaurantes = new ArrayList();
 
