@@ -32,6 +32,10 @@ public class Restaurante implements Serializable {
     @JoinColumn(name = "cozinha_id", nullable = false)
     private Cozinha cozinha;
 
+    @JsonIgnore
+    @Embedded //essa propriedade é de um time embeddado - parte da entidade restaurante
+    private Endereco endereco;
+
     /**
      * @author Dan Araújo
      * @date 03-06-2021
