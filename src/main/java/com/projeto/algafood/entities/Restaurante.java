@@ -2,6 +2,7 @@ package com.projeto.algafood.entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -35,6 +38,14 @@ public class Restaurante implements Serializable {
     @JsonIgnore
     @Embedded //essa propriedade é de um time embeddado - parte da entidade restaurante
     private Endereco endereco;
+
+    @CreationTimestamp
+    @Column(nullable = false, columnDefinition = "datetime")
+    private LocalDateTime dataCadastro;
+
+    @UpdateTimestamp
+    @Column(nullable = false, columnDefinition = "datetime")
+    private LocalDateTime dataAtualização;
 
     /**
      * @author Dan Araújo
